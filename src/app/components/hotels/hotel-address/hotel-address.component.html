@@ -1,37 +1,37 @@
 <div class="container mt-5">
-    <h2>Otel Adresi Ekle</h2>
-    <form [formGroup]="hotelAddressForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-            <label for="cityId" class="form-label">Şehir</label>
-            <select id="cityId" formControlName="cityId" class="form-control form-select">
-                <option selected>Lütfen İl Seçiniz</option>
-                <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="districtId" class="form-label">İlçe</label>
-            <select id="districtId" formControlName="districtId" class="form-control form-select">
-                <option selected>Lütfen İlçe Seçiniz</option>
-                <option *ngFor="let district of districts" [value]="district.id">{{ district.name }}</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="addressText" class="form-label">Açık Adres</label>
-            <input type="text" id="addressText" formControlName="addressText" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="hotelAddressForm.invalid">Adres Ekle</button>
-    </form>
-    <div *ngIf="message" class="alert alert-success mt-3">{{ message }}</div>
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div> <!-- Mesajı göster -->
+  <h2>Add Hotel Address</h2>
+  <form [formGroup]="hotelAddressForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="cityId" class="form-label">City</label>
+      <select id="cityId" formControlName="cityId" class="form-control form-select">
+        <option selected>Please Select a City</option>
+        <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="districtId" class="form-label">District</label>
+      <select id="districtId" formControlName="districtId" class="form-control form-select">
+        <option selected>Please Select a District</option>
+        <option *ngFor="let district of districts" [value]="district.id">{{ district.name }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="addressText" class="form-label">Full Address</label>
+      <input type="text" id="addressText" formControlName="addressText" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="hotelAddressForm.invalid">Add Address</button>
+  </form>
+  <div *ngIf="message" class="alert alert-success mt-3">{{ message }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div> <!-- Show the message -->
 </div>
 
 
 <!--
-Oda eklemek
-odaya bağlı imageurl eklemek
-kullanıcıya adres eklemek
-hotel adresini görüntülemek
-hotel resimlerini görüntülemek
-hotel resmi silmek
-odaları güncellemek
-otel aratmak -->
+Add Room
+Add image URL to room
+Add address for user
+Display hotel address
+Display hotel images
+Delete hotel image
+Update rooms
+Search hotel -->

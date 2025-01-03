@@ -1,14 +1,14 @@
 <app-layout>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h4 class="pb-3">Rezervasyon Oluşturmak İstediğinize Emin Misiniz ?</h4>
-                <p><strong>Giriş Tarihi:</strong> {{ enteranceDay }}</p>
-                <p><strong>Çıkış Tarihi:</strong> {{ releaseDay }}</p>
-                <p>{{ roomType }}</p>
-                <p><strong>Konum:</strong> {{ location }}</p>
-                <button class="btn btn-outline-success" (click)="createReservation()">Rezervasyon Oluştur</button>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h4 class="pb-3">Are You Sure You Want to Create a Reservation?</h4>
+        <p><strong>Check-in Date:</strong> {{ enteranceDay }}</p>
+        <p><strong>Check-out Date:</strong> {{ releaseDay }}</p>
+        <p>{{ roomType }}</p>
+        <p><strong>Location:</strong> {{ location }}</p>
+        <button class="btn btn-outline-success" (click)="createReservation()">Create Reservation</button>
+      </div>
     </div>
+  </div>
 </app-layout>

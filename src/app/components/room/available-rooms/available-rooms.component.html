@@ -1,37 +1,36 @@
 <app-layout>
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <div *ngIf="availableRooms.length > 0; else noRooms">
-                <h3>Müsait Odalar</h3>
-                <ul class="list-group">
-                    <li *ngFor="let room of availableRooms" class="list-group-item my-4">
-                        <div class="row">
-                            <div class="col-6">
-                                <p>Otel Adı: {{ room[1] }}</p>
-                                <p>Yıldız: {{ room[2] }}</p>
-                                <p>Adres: {{ room[3] }}, {{ room[4] }}, {{ room[5] }}</p>
-                                <button class="btn btn-success" (click)="getFeedbackList(room[6])">Yorumları
-                                    Görüntüle</button>
-                            </div>
-                            <div class="col-6">
-                                <h4>Oda Tipi: {{ room[0].roomType }}</h4>
-                                <p>Kapasite: {{ room[0].capacity }}</p>
-                                <p>Fiyat: {{ room[0].price | currency:'TRY' }}</p>
-                                <p>Durum: {{ room[0].roomStatus }}</p>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div *ngIf="availableRooms.length > 0; else noRooms">
+        <h3>Available Rooms</h3>
+        <ul class="list-group">
+          <li *ngFor="let room of availableRooms" class="list-group-item my-4">
+            <div class="row">
+              <div class="col-6">
+                <p>Hotel Name: {{ room[1] }}</p>
+                <p>Stars: {{ room[2] }}</p>
+                <p>Address: {{ room[3] }}, {{ room[4] }}, {{ room[5] }}</p>
+                <button class="btn btn-success" (click)="getFeedbackList(room[6])">View Feedback</button>
+              </div>
+              <div class="col-6">
+                <h4>Room Type: {{ room[0].roomType }}</h4>
+                <p>Capacity: {{ room[0].capacity }}</p>
+                <p>Price: {{ room[0].price | currency:'TRY' }}</p>
+                <p>Status: {{ room[0].roomStatus }}</p>
 
-                                <button class="btn btn-outline-success" (click)="createReservation(room[0].id)">
-                                    Rezervasyon Oluştur
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <button class="btn btn-outline-success" (click)="createReservation(room[0].id)">
+                  Create Reservation
+                </button>
+              </div>
             </div>
-            <ng-template #noRooms>
-                <p>Bu tarihlerde müsait oda bulunmamaktadır.</p>
-            </ng-template>
-        </div>
-        <div class="col-2"></div>
+          </li>
+        </ul>
+      </div>
+      <ng-template #noRooms>
+        <p>No available rooms for these dates.</p>
+      </ng-template>
     </div>
+    <div class="col-2"></div>
+  </div>
 </app-layout>
