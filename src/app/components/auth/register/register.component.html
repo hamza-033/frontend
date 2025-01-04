@@ -9,53 +9,51 @@
 
               <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
 
-                <div data-mdb-input-init class="form-outline mb-1">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <input type="text" id="name" class="form-control form-control-lg"
                          formControlName="name" />
                   <label class="form-label" for="name">Your Name</label>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-1">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <input type="text" id="surname" class="form-control form-control-lg"
                          formControlName="surname" />
                   <label class="form-label" for="surname">Your Surname</label>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-3">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <label class="form-label" for="gender">Gender</label>
-                  <br>
                   <select class="genderSelect w-100 form-select" formControlName="gender" id="gender">
                     <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
                   </select>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-1">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <input type="number" id="identificationNumber" class="form-control form-control-lg"
                          placeholder="XXXXXXXXXXX" formControlName="identificationNumber" />
                   <label class="form-label" for="identificationNumber">Identification Number</label>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-1">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <input type="number" id="phoneNumber" class="form-control form-control-lg"
                          placeholder="0 (---) (--- -- --)" formControlName="phoneNumber" />
                   <label class="form-label" for="phoneNumber">Phone Number</label>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-1">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <input type="email" id="email" class="form-control form-control-lg"
                          placeholder="example@email.com" formControlName="email" />
                   <label class="form-label" for="email">Your Email Address</label>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-1">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <input type="password" id="password" class="form-control form-control-lg"
                          placeholder="**********" formControlName="password" />
                   <label class="form-label" for="password">Password</label>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-3">
+                <div data-mdb-input-init class="form-outline mb-3"> <!-- Augmenter la marge ici -->
                   <label class="form-label" for="role">User Role</label>
-                  <br>
                   <select class="genderSelect w-100 form-select" id="role" formControlName="role">
                     <option *ngFor="let role of roles" [value]="role">{{role}}</option>
                   </select>

@@ -18,7 +18,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class ConfirmReservationComponent implements OnInit {
   reservationForm: FormGroup;
-  paymentTypes = ['CREDITCARD', 'ATMCARD', 'EFT', 'PAYPAL'];
+  paymentTypes = ['CREDITCARD', 'MSATMCARD', 'PAYPAL'];
   reservationId: number | null = null;
   roomId: number = 0;
   enteranceDay: string = '';

@@ -46,7 +46,7 @@ export const routes: Routes = [
         component: SssComponent
     },
     {
-        path: 'aboutus',
+        path: 'about-us',
         component: AboutUsComponent
     },
     {

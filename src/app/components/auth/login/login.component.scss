@@ -1,29 +1,93 @@
+/* Gradient background */
 .gradient-custom-3 {
-    /* fallback for old browsers */
-    background: #84fab0;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 }
 
 .gradient-custom-4 {
-    /* fallback for old browsers */
-    background: #84fab0;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-    transition: background 2s, color 2s;
-    /* Geçiş efektini buraya ekleyin */
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+  transition: background 0.5s, color 0.5s;
 }
 
 .gradient-custom-4:hover {
-    background: rgb(59, 240, 225);
-    /* background-color yerine background kullanın */
-    color: white;
+  background: rgb(59, 240, 225);
+  color: white;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Input Fields */
+.form-outline {
+  position: relative;
+}
+
+.form-outline .form-control {
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-outline input:focus {
+  border-color: #5bc0de;
+  box-shadow: 0 0 0 0.2rem rgba(59, 240, 225, 0.5);
+}
+
+.form-outline label {
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #5bc0de;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: #4ba7c6;
+}
+
+/* Spacing and Alignment */
+.card-body {
+  padding: 40px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Success and Error Messages */
+.alert {
+  margin-top: 20px;
+  font-size: 1rem;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
 }
