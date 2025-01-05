@@ -8,12 +8,9 @@ import { ReservationService } from '../../../services/reservation/reservation.se
 @Component({
   selector: 'app-update-reservation',
   standalone: true,
-  imports: [CommonModule,
-    ReactiveFormsModule,
-    LayoutComponent
-  ],
+  imports: [CommonModule, ReactiveFormsModule, LayoutComponent],
   templateUrl: './update-reservation.component.html',
-  styleUrl: './update-reservation.component.scss'
+  styleUrl: './update-reservation.component.scss',
 })
 export class UpdateReservationComponent implements OnInit {
   reservationForm: FormGroup;
@@ -29,12 +26,12 @@ export class UpdateReservationComponent implements OnInit {
   ) {
     this.reservationForm = this.fb.group({
       id: ['', [Validators.required]],
-      reservationStatus: ['', [Validators.required]]
+      reservationStatus: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.reservationId = +params['reservationId'];
       if (this.reservationId) {
         this.reservationForm.patchValue({ id: this.reservationId });
@@ -48,14 +45,14 @@ export class UpdateReservationComponent implements OnInit {
   onSubmit(): void {
     if (this.reservationForm.valid) {
       this.reservationService.updateReservationStatus(this.reservationForm.value).subscribe(
-        response => {
-          this.message = 'Rezervasyon durumu başarıyla güncellendi.';
+        (response) => {
+          this.message = 'Reservation status successfully updated.';
           setTimeout(() => {
             this.router.navigate(['/hotelmanagment/myhotellist']);
           }, 2000);
         },
-        error => {
-          this.errorMessage = 'Rezervasyon durumu güncellenirken bir hata oluştu.';
+        (error) => {
+          this.errorMessage = 'An error occurred while updating the reservation status.';
           console.error('Error updating reservation status:', error);
         }
       );

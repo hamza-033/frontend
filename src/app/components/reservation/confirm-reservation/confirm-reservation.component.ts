@@ -18,7 +18,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class ConfirmReservationComponent implements OnInit {
   reservationForm: FormGroup;
-  paymentTypes = ['CREDITCARD', 'MSATMCARD', 'PAYPAL'];
+  paymentTypes = ['CREDITCARD', 'MASTERCARD',  'PAYPAL'];
   reservationId: number | null = null;
   roomId: number = 0;
   enteranceDay: string = '';
@@ -46,7 +46,7 @@ export class ConfirmReservationComponent implements OnInit {
       this.enteranceDay = params['enteranceDay'];
       this.releaseDay = params['releaseDay'];
     });
-    this.addGuest(); // En az bir misafir bilgisi eklemek için çağırılır.
+    this.addGuest(); // Called to add at least one guest information.
   }
 
   get guests(): FormArray {
@@ -94,12 +94,12 @@ export class ConfirmReservationComponent implements OnInit {
             });
           },
           error => {
-            console.error('Misafir oluşturulurken hata:', error);
+            console.error('Error while creating guest:', error);
           }
         );
       },
       error => {
-        console.error('Ödeme yapılırken hata:', error);
+        console.error('Error while processing payment:', error);
       }
     );
   }

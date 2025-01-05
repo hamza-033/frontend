@@ -47,13 +47,13 @@ export class FeedbackResponseComponent implements OnInit {
       const description = this.responseForm.get('description')?.value;
       this.hotelService.addResponseToFeedback(this.feedbackId, description).subscribe(
         response => {
-          this.message = 'Yorum başarıyla yanıtlandı.';
+          this.message = 'Feedback successfully responded to.';
           setTimeout(() => {
             this.router.navigate(['/hotelmanagment/hoteldetails']);
           }, 2000);
         },
         error => {
-          this.errorMessage = 'Yorum yanıtlanırken bir hata oluştu.';
+          this.errorMessage = 'An error occurred while responding to the feedback.';
           console.error('Error responding to feedback:', error);
         }
       );

@@ -16,7 +16,7 @@
               <div class="col-6">
                 <h4>Room Type: {{ room[0].roomType }}</h4>
                 <p>Capacity: {{ room[0].capacity }}</p>
-                <p>Price: {{ room[0].price | currency:'TRY' }}</p>
+                <p>Price: {{ room[0].price | currency:'MAD' }}</p>
                 <p>Status: {{ room[0].roomStatus }}</p>
 
                 <button class="btn btn-outline-success" (click)="createReservation(room[0].id)">

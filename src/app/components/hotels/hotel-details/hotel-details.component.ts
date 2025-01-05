@@ -7,8 +7,7 @@ import { LayoutComponent } from '../../layout/layout.component';
 @Component({
   selector: 'app-hotel-details',
   standalone: true,
-  imports: [CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './hotel-details.component.html',
   styleUrl: './hotel-details.component.scss'
 })
@@ -29,16 +28,16 @@ export class HotelDetailsComponent implements OnInit {
         data => {
           this.hotel = data.find((hotel: any) => hotel.id === this.hotelId);
           if (!this.hotel) {
-            console.error('Hotel bulunamadı.');
+            console.error('Hotel not found.');
             this.router.navigate(['/hotelmanagment']);
           }
         },
         error => {
-          console.error('Hata:', error);
+          console.error('Error:', error);
         }
       );
     } else {
-      console.error('Hotel ID bulunamadı.');
+      console.error('Hotel ID not found.');
       this.router.navigate(['/hotelmanagment']);
     }
   }

@@ -16,7 +16,7 @@ import { LayoutComponent } from '../../layout/layout.component';
 })
 export class MyReservationListComponent implements OnInit {
   reservations: any[] = [];
-  guestInformations: { [key: number]: any[] } = {}; // reservationId'ye göre guest information verilerini tutar
+  guestInformations: { [key: number]: any[] } = {};
   userId: number | null = null;
 
   constructor(
@@ -47,7 +47,7 @@ export class MyReservationListComponent implements OnInit {
   }
 
   fetchGuestInformations(reservationId: number): void {
-    if (!this.guestInformations[reservationId]) { // Sadece veriler daha önce çekilmediyse API çağrısı yap
+    if (!this.guestInformations[reservationId]) {
       this.reservationService.getGuestsByReservationId(reservationId).subscribe(
         (data: any[]) => {
           this.guestInformations[reservationId] = data;

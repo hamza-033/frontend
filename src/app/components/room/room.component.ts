@@ -7,31 +7,29 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [ReactiveFormsModule,
-    CommonModule
-  ],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './room.component.html',
-  styleUrl: './room.component.scss'
+  styleUrl: './room.component.scss',
 })
 export class RoomComponent implements OnInit {
   roomForm: FormGroup;
   hotelId: number | null = null;
   message: string | null = null;
   errorMessage: string | null = null;
-  roomStatuses = Object.values(RoomStatus);  // Enum değerlerini burada alıyoruz
+  roomStatuses = Object.values(RoomStatus);
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private roomService: RoomService,
+    private roomService: RoomService
   ) {
     this.roomForm = this.fb.group({
       hotelId: ['', Validators.required],
       roomType: ['', Validators.required],
       capacity: ['', [Validators.required, Validators.min(1), Validators.max(8)]],
       price: ['', [Validators.required]],
-      roomStatus: ['', Validators.required]
+      roomStatus: ['', Validators.required],
     });
   }
 
@@ -40,7 +38,7 @@ export class RoomComponent implements OnInit {
     if (this.hotelId) {
       this.roomForm.patchValue({ hotelId: this.hotelId });
     } else {
-      console.error('Hotel ID bulunamadı.');
+      console.error('Hotel ID not found.'); // Translated error message
       this.router.navigate(['/myhotellist']);
     }
   }
@@ -48,11 +46,12 @@ export class RoomComponent implements OnInit {
   onSubmit(): void {
     if (this.roomForm.valid) {
       this.roomService.addRoom(this.roomForm.value).subscribe(
-        response => {
-          this.message = 'Oda başarıyla eklendi.';
+        (response) => {
+          this.message = 'Room successfully added.';
         },
-        error => {
-          this.errorMessage = 'Oda ekleme hatası: ';
+        (error) => {
+          this.errorMessage = 'Error adding room: ';
+          console.error('Error adding room:', error);
         }
       );
     }
@@ -61,5 +60,6 @@ export class RoomComponent implements OnInit {
 
 enum RoomStatus {
   AVAILABLE = 'AVAILABLE',
-  NOTAVAILABLE = 'NOTAVAILABLE'
+  NOTAVAILABLE = 'NOTAVAILABLE',
 }
+

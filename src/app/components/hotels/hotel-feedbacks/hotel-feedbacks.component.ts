@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-hotel-feedbacks',
   standalone: true,
-  imports: [LayoutComponent, CommonModule
-  ],
+  imports: [LayoutComponent, CommonModule],
   templateUrl: './hotel-feedbacks.component.html',
   styleUrl: './hotel-feedbacks.component.scss'
 })
@@ -41,11 +40,11 @@ export class HotelFeedbacksComponent implements OnInit {
       data => {
         this.feedbacks = data;
         if (data.length === 0) {
-          this.message = 'Bu otel için henüz yorum bulunmamaktadır.';
+          this.message = 'No feedback available for this hotel yet.';
         }
       },
       error => {
-        this.errorMessage = 'Yorumlar yüklenirken bir hata oluştu';
+        this.errorMessage = 'An error occurred while loading feedbacks';
         console.error('Error fetching feedbacks:', error);
       }
     );
@@ -54,5 +53,4 @@ export class HotelFeedbacksComponent implements OnInit {
   answerFeedback(feedbackId: number): void {
     this.router.navigate(['/addfeedbackresponse'], { queryParams: { feedbackId } });
   }
-
 }

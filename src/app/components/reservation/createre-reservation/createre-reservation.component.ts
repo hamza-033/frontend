@@ -21,7 +21,6 @@ export class CreatereReservationComponent implements OnInit {
   capacity: number = 0;
   location: string = '';
 
-
   constructor(
     private route: ActivatedRoute,
     private reservationService: ReservationService,
@@ -51,7 +50,7 @@ export class CreatereReservationComponent implements OnInit {
 
     this.reservationService.createReservation(reservationRequest).subscribe(
       (response: any) => {
-        const reservationId = response.id; // Rezervasyon ID'sini al
+        const reservationId = response.id; // Get reservation ID
         this.router.navigate(['/confirmreservation'], {
           queryParams: {
             reservationId: reservationId,
@@ -62,7 +61,7 @@ export class CreatereReservationComponent implements OnInit {
         });
       },
       error => {
-        console.error('Rezervasyon oluşturulurken hata:', error);
+        console.error('Error while creating reservation:', error);
       }
     );
   }

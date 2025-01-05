@@ -7,11 +7,9 @@ import { LayoutComponent } from '../../layout/layout.component';
 @Component({
   selector: 'app-reservation-details',
   standalone: true,
-  imports: [CommonModule,
-    LayoutComponent
-  ],
+  imports: [CommonModule, LayoutComponent],
   templateUrl: './reservation-details.component.html',
-  styleUrl: './reservation-details.component.scss'
+  styleUrl: './reservation-details.component.scss',
 })
 export class ReservationDetailsComponent implements OnInit {
   reservationDetails: any;
@@ -22,17 +20,17 @@ export class ReservationDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private reservationService: ReservationService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.reservationId = +params['reservationId'];
 
       if (this.reservationId) {
         this.fetchReservationDetails();
         this.fetchGuestInformations();
       } else {
-        console.error('Rezervasyon ID parametrelerde bulunamadı');
+        console.error('Reservation ID not found in query parameters');
       }
     });
   }
@@ -40,11 +38,11 @@ export class ReservationDetailsComponent implements OnInit {
   fetchReservationDetails(): void {
     if (this.reservationId !== null) {
       this.reservationService.getReservationDetails(this.reservationId).subscribe(
-        data => {
+        (data) => {
           this.reservationDetails = data;
         },
-        error => {
-          console.error('Rezervasyon detayları alınırken hata:', error);
+        (error) => {
+          console.error('Error fetching reservation details:', error);
         }
       );
     }
@@ -53,11 +51,11 @@ export class ReservationDetailsComponent implements OnInit {
   fetchGuestInformations(): void {
     if (this.reservationId !== null) {
       this.reservationService.getGuestsByReservationId(this.reservationId).subscribe(
-        data => {
+        (data) => {
           this.guestInformations = data;
         },
-        error => {
-          console.error('Misafir bilgileri alınırken hata:', error);
+        (error) => {
+          console.error('Error fetching guest information:', error);
         }
       );
     }

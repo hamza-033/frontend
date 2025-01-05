@@ -60,7 +60,7 @@ export class AddressUpdateComponent implements OnInit {
         this.cities = data;
       },
       error => {
-        console.error('Şehirler yüklenirken bir hata oluştu', error);
+        console.error('An error occurred while loading cities', error);
       }
     );
 
@@ -70,7 +70,7 @@ export class AddressUpdateComponent implements OnInit {
           this.districts = data;
         },
         error => {
-          console.error('İlçeler yüklenirken bir hata oluştu', error);
+          console.error('An error occurred while loading districts', error);
         }
       );
     });
@@ -89,16 +89,16 @@ export class AddressUpdateComponent implements OnInit {
 
       this.userAddressService.updateUserAddress(updateUserAddressRequest).subscribe(
         response => {
-          this.message = 'Adres başarıyla güncellendi';  // Mesajı güncelle
-          console.log('Adres başarıyla güncellendi:', response);
+          this.message = 'Address successfully updated';  // Update the message
+          console.log('Address successfully updated:', response);
           setTimeout(() => {
-            this.message = null;  // Mesajı belirli bir süre sonra temizle
+            this.message = null;  // Clear the message after a while
             this.router.navigate(['/profile']);
-          }, 2000);  // Mesaj 3 saniye sonra kaybolur ve yönlendirilir
+          }, 2000);  // The message will disappear after 2 seconds and then redirect
         },
         error => {
-          this.errorMessage = 'Adres Güncellenemedi';
-          console.error('Adres güncellenirken hata:', error);
+          this.errorMessage = 'Address could not be updated';
+          console.error('An error occurred while updating the address:', error);
         }
       );
     }

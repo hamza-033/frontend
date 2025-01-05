@@ -1,10 +1,8 @@
-
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
-
 
 @Component({
   selector: 'app-register',
@@ -18,11 +16,11 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-  registerform: FormGroup
-  genders = ['ERKEK', 'KADIN']
-  roles = ['USER', 'MANAGER', 'ADMIN']
-  message: string | null = null;  // Mesaj değişkeni
-  errorMessage: string | null = null;  // Mesaj değişkeni
+  registerform: FormGroup;
+  genders = ['MALE', 'FEMALE'];
+  roles = ['USER', 'MANAGER' ];
+  message: string | null = null;
+  errorMessage: string | null = null;
 
   constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerform = this.FormBuilder.group({
@@ -34,28 +32,28 @@ export class RegisterComponent {
       email: ['', Validators.required],
       password: ['', Validators.required],
       role: ['', Validators.required]
-    })
+    });
   }
 
   onSubmit(): void {
     if (this.registerform.valid) {
       this.authService.registerUser(this.registerform.value).subscribe(
         response => {
-          this.message = 'Kayıt Başarıyla Oluşturuldu.Ana Sayfaya Yönlendiriliyorsunuz!';  // Mesajı güncelle
-          console.log('', response)
+          this.message = 'Registration Successful. Redirecting to Homepage!';
+          console.log('Registration Successful', response);
           setTimeout(() => {
-            this.message = null;  // Mesajı belirli bir süre sonra temizle
+            this.message = null;
             this.router.navigate(['/']);
           }, 2000);
         },
         error => {
-          console.log('Kayıt Hatası', error);
-          this.errorMessage = 'Otel Eklenemedi';
+          console.log('Registration Error', error);
+          this.errorMessage = 'Registration Failed';
           setTimeout(() => {
             this.errorMessage = null;
-          }, 2000);  // 2000 milisaniye = 2 saniye // Hata mesajını güncelle
+          }, 2000);
         }
-      )
+      );
     }
   }
 }

@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from '../../layout/layout.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../services/user/user.service';
-import { AuthService } from '../../../services/auth/auth.service';
 import { HotelService } from '../../../services/hotel/hotel.service';
 
 @Component({
@@ -45,11 +43,11 @@ export class FeedbackListForUsersComponent implements OnInit {
       data => {
         this.feedbacks = data;
         if (data.length === 0) {
-          this.message = 'Bu otel için henüz yorum bulunmamaktadır.';
+          this.message = 'No feedbacks yet for this hotel.';
         }
       },
       error => {
-        this.errorMessage = 'Yorumlar yüklenirken bir hata oluştu';
+        this.errorMessage = 'An error occurred while loading feedbacks';
         console.error('Error fetching feedbacks:', error);
       }
     );

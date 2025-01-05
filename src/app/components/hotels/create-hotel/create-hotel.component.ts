@@ -18,8 +18,8 @@ import { Router } from '@angular/router';
 export class CreateHotelComponent implements OnInit {
   hotelForm: FormGroup;
   userId: number | null = null;
-  message: string | null = null;  // Mesaj değişkeni
-  errorMessage: string | null = null;  // Mesaj değişkeni
+  message: string | null = null;
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -49,18 +49,18 @@ export class CreateHotelComponent implements OnInit {
     if (this.hotelForm.valid) {
       this.hotelService.addHotel(this.hotelForm.value).subscribe(
         response => {
-          this.message = 'Otel başarıyla oluşturuldu.';  // Mesajı güncelle
+          this.message = 'Hotel created successfully.';
           setTimeout(() => {
-            this.message = null;  // Mesajı belirli bir süre sonra temizle
+            this.message = null;
             this.router.navigate(['/hotelmanagment/myhotellist']);
-          }, 2000);  // Mesaj 3 saniye sonra kaybolur ve yönlendirilir
+          }, 2000);
         },
         error => {
-          console.error('Otel ekleme hatası:', error);
-          this.errorMessage = 'Otel Eklenemedi';
+          console.error('Error adding hotel:', error);
+          this.errorMessage = 'Hotel could not be added.';
           setTimeout(() => {
             this.errorMessage = null;
-          }, 2000);  // 2000 milisaniye = 2 saniye // Hata mesajını güncelle
+          }, 2000);
         }
       );
     }

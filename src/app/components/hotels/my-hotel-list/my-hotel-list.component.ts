@@ -28,11 +28,11 @@ export class MyHotelListComponent implements OnInit {
           this.hotels = data.filter((hotel: any) => hotel.userId === this.userId);
         },
         (error) => {
-          console.error('Hata:', error);
+          console.error('Error:', error);
         }
       );
     } else {
-      console.error('Kullanıcı ID bulunamadı.');
+      console.error('User ID not found.');
     }
   }
 

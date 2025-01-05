@@ -4,7 +4,7 @@
       <div class="col-8">
         <div *ngIf="reservationDetails">
           <h1>Reservation Details</h1>
-          <p><strong>Reservation Number</strong> TTLYREV{{ reservationDetails.id }}</p>
+          <p><strong>Reservation Number</strong> {{ reservationDetails.id }}</p>
           <p><strong>Hotel Name:</strong> {{ reservationDetails.hotel.name }}</p>
           <p><strong>Hotel Phone Number:</strong> {{ reservationDetails.hotel.phoneNumber }}</p>
           <p><strong>Hotel Star:</strong> {{ reservationDetails.hotel.hotelStar }}</p>

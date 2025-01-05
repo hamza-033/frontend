@@ -8,19 +8,16 @@ import { RoomService } from '../../../services/room/room.service';
 @Component({
   selector: 'app-room-update',
   standalone: true,
-  imports: [LayoutComponent,
-    CommonModule,
-    ReactiveFormsModule
-  ],
+  imports: [LayoutComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './room-update.component.html',
-  styleUrl: './room-update.component.scss'
+  styleUrl: './room-update.component.scss',
 })
 export class RoomUpdateComponent implements OnInit {
   roomForm: FormGroup;
   roomId: number | null = null;
   roomStatuses = ['AVAILABLE', 'NOTAVAILABLE'];
-  message: string | null = null;  // Mesaj değişkeni
-  errorMessage: string | null = null;  // Mesaj değişkeni
+  message: string | null = null;
+  errorMessage: string | null = null;
   hotelId: number | null = null;
 
   constructor(
@@ -34,12 +31,12 @@ export class RoomUpdateComponent implements OnInit {
       roomType: ['', [Validators.required, Validators.minLength(3)]],
       capacity: ['', [Validators.required, Validators.min(1), Validators.max(8)]],
       price: ['', Validators.required],
-      roomStatus: ['', Validators.required]
+      roomStatus: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.roomId = +params['roomId'];
       this.hotelId = +params['hotelId'];
       if (this.roomId && this.hotelId) {
@@ -59,19 +56,19 @@ export class RoomUpdateComponent implements OnInit {
     if (this.roomForm.valid) {
       const updateRoomRequest = this.roomForm.value;
       this.roomService.updateRoom(updateRoomRequest).subscribe(
-        response => {
-          this.message = 'Oda başarıyla güncellendi.';  // Mesajı güncelle
+        (response) => {
+          this.message = 'Room updated successfully.';
           setTimeout(() => {
-            this.message = null;  // Mesajı belirli bir süre sonra temizle
+            this.message = null;
             this.router.navigate(['/hotelmanagment/myhotellist']);
-          }, 2000);  // Mesaj 3 saniye sonra kaybolur ve yönlendirilir
+          }, 2000); // Redirect after 2 seconds
           console.log('Room updated successfully', response);
         },
-        error => {
-          this.errorMessage = 'Oda Güncellenemedi';
+        (error) => {
+          this.errorMessage = 'Room update failed.';
           setTimeout(() => {
             this.errorMessage = null;
-          }, 2000);  // 2000 milisaniye = 2 saniye // Hata mesajını güncelle
+          }, 2000);
           console.error('Error updating room', error);
         }
       );

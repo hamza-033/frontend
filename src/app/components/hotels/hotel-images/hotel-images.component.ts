@@ -28,7 +28,7 @@ export class HotelImageComponent implements OnInit {
   ngOnInit(): void {
     this.hotelId = Number(this.route.snapshot.paramMap.get('hotelId'));
     if (!this.hotelId) {
-      console.error('Hotel ID bulunamadı.');
+      console.error('Hotel ID not found.');
       this.router.navigate(['/hotelmanagment/myhotellist']);
     }
   }
@@ -47,10 +47,10 @@ export class HotelImageComponent implements OnInit {
 
       this.hotelImageService.uploadHotelImage(this.hotelId!, formData).subscribe(
         response => {
-          console.log('', response);
+          console.log('Image uploaded successfully', response);
         },
         error => {
-          console.error('Resim yükleme hatası', error);
+          console.error('Image upload error', error);
         }
       );
     }

@@ -37,12 +37,12 @@ export class FeedbackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = this.authService.getUserIdFromToken(); // UserId'yi token'dan alıyoruz
+    this.userId = this.authService.getUserIdFromToken();
     this.route.queryParams.subscribe(params => {
       this.reservationId = +params['reservationId'];
       if (!this.reservationId) {
         console.error('Reservation ID not found in query parameters');
-        this.router.navigate(['/myreservations']); // Redirect if no reservation ID
+        this.router.navigate(['/myreservations']);
       }
     });
   }
@@ -56,17 +56,17 @@ export class FeedbackComponent implements OnInit {
 
       this.userService.addFeedback(feedbackData).subscribe(
         response => {
-          this.message = 'Feedback başarıyla gönderildi.';
+          this.message = 'Feedback successfully submitted.';
           setTimeout(() => {
             this.message = null;
-            this.router.navigate(['/myreservationlist'], { queryParams: { userId: this.userId } }); // UserId'yi query parametre olarak gönderiyoruz
-          }, 3000); // Mesajı 3 saniye sonra temizle ve yönlendir
+            this.router.navigate(['/myreservationlist'], { queryParams: { userId: this.userId } }); // Send userId as a query parameter
+          }, 3000);
         },
         error => {
-          this.errorMessage = 'Feedback gönderilirken bir hata oluştu.';
+          this.errorMessage = 'An error occurred while submitting the feedback.';
           setTimeout(() => {
             this.errorMessage = null;
-          }, 3000); // Hata mesajını 3 saniye sonra temizle
+          }, 3000);
         }
       );
     }

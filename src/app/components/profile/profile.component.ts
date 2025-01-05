@@ -21,7 +21,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class ProfileComponent implements OnInit {
 
   user: any;
-  profileForm: FormGroup
+  profileForm: FormGroup;
   message: string | null = null;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) {
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\\d).{6,}$')]],
       phoneNumber: ['', [Validators.required, Validators.pattern('^\\d+$')]]
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
         });
       },
       error => {
-        console.error('Profil verileri alınamadı', error);
+        console.error('Profile data could not be retrieved', error);
       }
     );
   }
@@ -52,16 +52,16 @@ export class ProfileComponent implements OnInit {
     if (this.profileForm.valid) {
       this.userService.updateUser(this.profileForm.value).subscribe(
         response => {
-          this.message = 'Kullanıcı Profili Güncellendi'
-          console.log('Kullanıcı bilgileri güncellendi:', response);
+          this.message = 'User Profile Updated';
+          console.log('User information updated:', response);
           setTimeout(() => {
-            this.message = null;  // Mesajı belirli bir süre sonra temizle
+            this.message = null;
             this.router.navigate(['/profile']);
           }, 3000);
         },
         error => {
-          console.error('Güncelleme hatası:', error);
-          this.message = 'Profil Bilgileri Güncellenemedi' + error.message;
+          console.error('Update error:', error);
+          this.message = 'Profile Information Could Not Be Updated' + error.message;
         }
       );
     }
@@ -74,5 +74,4 @@ export class ProfileComponent implements OnInit {
   send(): void {
     this.router.navigate(['/createuseraddress']);
   }
-
 }

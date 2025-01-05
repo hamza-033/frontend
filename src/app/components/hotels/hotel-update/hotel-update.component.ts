@@ -51,14 +51,14 @@ export class HotelUpdateComponent implements OnInit {
     if (this.hotelForm.valid) {
       this.hotelService.updateHotel(this.hotelForm.value).subscribe(
         response => {
-          this.message = 'Hotel başarıyla güncellendi.';
+          this.message = 'Hotel updated successfully.';
           setTimeout(() => {
             this.message = null;
             this.router.navigate(['/hotelmanagment']);
           }, 2000);
         },
         error => {
-          this.errorMessage = 'Hotel güncellenirken hata oluştu.';
+          this.errorMessage = 'An error occurred while updating the hotel.';
           setTimeout(() => {
             this.errorMessage = null;
           }, 2000);

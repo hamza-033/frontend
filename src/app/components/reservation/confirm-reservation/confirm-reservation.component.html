@@ -2,7 +2,7 @@
   <div class="container">
     <form [formGroup]="reservationForm" (ngSubmit)="confirmReservation()">
       <div class="mb-3">
-        <label for="paymentType" class="form-label">Ödeme Tipi</label>
+        <label for="paymentType" class="form-label">Payment Type</label>
         <select id="paymentType" formControlName="paymentType" class="form-control form-select">
           <option *ngFor="let type of paymentTypes" [value]="type">{{ type }}</option>
         </select>
@@ -12,22 +12,22 @@
         <div *ngFor="let guest of guests.controls; let i = index" [formGroupName]="i" class="mb-3">
           <div class="row">
             <div class="col">
-              <label for="name" class="form-label">İsim</label>
+              <label for="name" class="form-label">First Name</label>
               <input type="text" formControlName="name" class="form-control">
             </div>
             <div class="col">
-              <label for="surname" class="form-label">Soyisim</label>
+              <label for="surname" class="form-label">Last Name</label>
               <input type="text" formControlName="surname" class="form-control">
             </div>
             <div class="col">
-              <label for="identificationNumber" class="form-label">Kimlik Numarası</label>
+              <label for="identificationNumber" class="form-label">Identification Number</label>
               <input type="text" formControlName="identificationNumber" class="form-control">
             </div>
             <div class="col">
-              <label for="gender" class="form-label">Cinsiyet</label>
+              <label for="gender" class="form-label">Gender</label>
               <select formControlName="gender" class="form-control form-select">
-                <option value="ERKEK">Erkek</option>
-                <option value="KADIN">Kadın</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
               </select>
             </div>
             <div class="col-auto align-self-center">
@@ -37,9 +37,8 @@
         </div>
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="addGuest()">Misafir Ekle</button>
-      <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid">Onayla ve Ödeme
-        Yap</button>
+      <button type="button" class="btn btn-primary" (click)="addGuest()">Add Guest</button>
+      <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid">Confirm and Pay</button>
     </form>
   </div>
 </app-layout>
