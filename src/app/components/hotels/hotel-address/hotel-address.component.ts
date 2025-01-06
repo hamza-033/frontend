@@ -51,7 +51,6 @@ export class HotelAddressComponent implements OnInit {
       this.router.navigate(['/myhotellist']);
     }
 
-    // Fetching cities
     this.cityService.getAllCities().subscribe(
       data => {
         this.cities = data;
@@ -61,7 +60,6 @@ export class HotelAddressComponent implements OnInit {
       }
     );
 
-    // Fetching districts based on selected city ID
     this.hotelAddressForm.get('cityId')?.valueChanges.subscribe(cityId => {
       this.districtService.getDistrictsByCity(cityId).subscribe(
         data => {

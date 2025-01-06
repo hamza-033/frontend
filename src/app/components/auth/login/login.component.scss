@@ -1,4 +1,4 @@
-/* Gradient background */
+
 .gradient-custom-3 {
   background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 }
@@ -13,14 +13,12 @@
   color: white;
 }
 
-/* Card Styling */
 .card {
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
-/* Input Fields */
 .form-outline {
   position: relative;
 }
@@ -48,7 +46,6 @@
   padding: 0 5px;
 }
 
-/* Button Styling */
 .btn-primary {
   background-color: #5bc0de;
   border: none;
@@ -63,7 +60,6 @@
   background-color: #4ba7c6;
 }
 
-/* Spacing and Alignment */
 .card-body {
   padding: 40px;
 }
@@ -74,7 +70,7 @@ h2 {
   color: #333;
 }
 
-/* Success and Error Messages */
+
 .alert {
   margin-top: 20px;
   font-size: 1rem;

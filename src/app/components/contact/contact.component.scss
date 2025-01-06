@@ -1,10 +1,10 @@
-/* Contact Page Styling */
+
 .container {
   margin-top: 100px;
 }
 
 .row {
-  background-color: #f8f9fa; /* Light gray background */
+  background-color: #f8f9fa;
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -15,7 +15,7 @@
 }
 
 h3 {
-  color: #003366; /* Deep blue */
+  color: #003366;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 15px;
@@ -33,14 +33,14 @@ b {
 }
 
 .contact-link {
-  color: #00aaff; /* Light sky blue for email and phone */
+  color: #00aaff;
   text-decoration: none;
   font-weight: 600;
 }
 
 .contact-link:hover {
   text-decoration: underline;
-  color: #005f77; /* Darker blue on hover */
+  color: #005f77;
 }
 
 iframe {
