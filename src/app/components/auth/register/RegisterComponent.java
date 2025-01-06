@@ -17,8 +17,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
   registerform: FormGroup;
-  genders = ['ERKEK', 'KADIN'];
-  roles = ['USER', 'MANAGER', 'ADMIN'];
+  genders = ['MALE', 'FEMALE'];
+  roles = ['USER', 'MANAGER'];
   message: string | null = null; // Success message
   errorMessage: string | null = null; // Error message
 
