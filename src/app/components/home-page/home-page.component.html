@@ -1,35 +1,48 @@
 <app-layout>
   <div class="background-image mb-5">
     <div class="container2 d-flex justify-content-center">
-      <img class="img"
-           src="assets/emi1.png"
-           alt="">
+      <img class="img" src="assets/emi1.png" alt="">
     </div>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
           <form [formGroup]="searchForm">
+            <!-- Location Input -->
             <mat-form-field class="px-3">
               <mat-label>Location</mat-label>
               <input matInput formControlName="location" placeholder="City or District">
             </mat-form-field>
+
+            <!-- Date Range Input -->
             <mat-form-field class="px-3">
               <mat-label>Enter Date Range</mat-label>
-              <mat-date-range-input [rangePicker]="picker">
+              <mat-date-range-input [rangePicker]="picker" [min]="minDate">
                 <input matStartDate formControlName="startDate" placeholder="Start Date">
                 <input matEndDate formControlName="endDate" placeholder="End Date">
               </mat-date-range-input>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
+
+            <!-- Room Type Input -->
             <mat-form-field class="px-3">
               <mat-label>Room Type</mat-label>
               <input matInput formControlName="roomType" placeholder="Room Type">
             </mat-form-field>
+
+            <!-- Capacity Input -->
             <mat-form-field class="px-3">
               <mat-label>Capacity</mat-label>
               <input matInput formControlName="capacity" type="number" placeholder="Capacity">
             </mat-form-field>
+
+            <!-- Error Message for Invalid Date Range -->
+            <div *ngIf="searchForm.errors?.['dateRangeInvalid']" class="error-message text-danger">
+              Start date must be before or equal to the end date.
+            </div>
+
+
+            <!-- Search Button -->
             <button class="btn btn-primary" [disabled]="!searchForm.valid" (click)="onSearch()">
               Search Holiday
             </button>
@@ -38,11 +51,4 @@
       </div>
     </div>
   </div>
-  <!-- <div class="container slider my-4">
-      <app-city-slider></app-city-slider>
-  </div> -->
 </app-layout>
-
-<!--
-5-Admin Panel
-7-Notification Adding -->

@@ -9,68 +9,111 @@
 
               <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
 
+                <!-- Name -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <input type="text" id="name" class="form-control form-control-lg"
                          formControlName="name" />
                   <label class="form-label" for="name">Your Name</label>
+                  <div *ngIf="registerform.get('name')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('name')?.hasError('required')">Name is required.</small>
+                  </div>
                 </div>
 
+                <!-- Surname -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <input type="text" id="surname" class="form-control form-control-lg"
                          formControlName="surname" />
                   <label class="form-label" for="surname">Your Surname</label>
+                  <div *ngIf="registerform.get('surname')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('surname')?.hasError('required')">Surname is required.</small>
+                  </div>
                 </div>
 
+                <!-- Gender -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <label class="form-label" for="gender">Gender</label>
                   <select class="genderSelect w-100 form-select" formControlName="gender" id="gender">
                     <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
                   </select>
+                  <div *ngIf="registerform.get('gender')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('gender')?.hasError('required')">Gender is required.</small>
+                  </div>
                 </div>
 
+                <!-- Identification Number -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <input type="number" id="identificationNumber" class="form-control form-control-lg"
                          placeholder="XXXXXXXXXXX" formControlName="identificationNumber" />
                   <label class="form-label" for="identificationNumber">Identification Number</label>
+                  <div *ngIf="registerform.get('identificationNumber')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('identificationNumber')?.hasError('required')">Identification number is required.</small>
+                    <small class="text-danger" *ngIf="registerform.get('identificationNumber')?.hasError('pattern')">Identification number must contain exactly 11 digits.</small>
+                  </div>
                 </div>
 
+                <!-- Phone Number -->
                 <div data-mdb-input-init class="form-outline mb-3">
-                  <input type="number" id="phoneNumber" class="form-control form-control-lg"
+                  <input type="text" id="phoneNumber" class="form-control form-control-lg"
                          placeholder="0 (---) (--- -- --)" formControlName="phoneNumber" />
                   <label class="form-label" for="phoneNumber">Phone Number</label>
+                  <div *ngIf="registerform.get('phoneNumber')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('phoneNumber')?.hasError('required')">Phone number is required.</small>
+                    <small class="text-danger" *ngIf="registerform.get('phoneNumber')?.hasError('pattern')">Phone number must start with 06 or 07 and contain 10 digits.</small>
+                  </div>
                 </div>
 
+                <!-- Email -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <input type="email" id="email" class="form-control form-control-lg"
                          placeholder="example@email.com" formControlName="email" />
                   <label class="form-label" for="email">Your Email Address</label>
+                  <div *ngIf="registerform.get('email')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('email')?.hasError('required')">Email is required.</small>
+                    <small class="text-danger" *ngIf="registerform.get('email')?.hasError('pattern')">Please enter a valid email (e.g., example&#64;email.com, example&#64;gmail.com, or example&#64;outlook.com).</small>
+                  </div>
                 </div>
 
+                <!-- Password -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <input type="password" id="password" class="form-control form-control-lg"
                          placeholder="**********" formControlName="password" />
                   <label class="form-label" for="password">Password</label>
+                  <div *ngIf="registerform.get('password')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('password')?.hasError('required')">Password is required.</small>
+                    <small class="text-danger" *ngIf="registerform.get('password')?.hasError('pattern')">Password must contain at least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters.</small>
+                    <small class="text-danger" *ngIf="registerform.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</small>
+                  </div>
                 </div>
 
+                <!-- Role -->
                 <div data-mdb-input-init class="form-outline mb-3">
                   <label class="form-label" for="role">User Role</label>
                   <select class="genderSelect w-100 form-select" id="role" formControlName="role">
                     <option *ngFor="let role of roles" [value]="role">{{role}}</option>
                   </select>
+                  <div *ngIf="registerform.get('role')?.touched">
+                    <small class="text-danger" *ngIf="registerform.get('role')?.hasError('required')">Role is required.</small>
+                  </div>
                 </div>
 
+                <!-- Submit Button -->
                 <div class="d-flex justify-content-center">
                   <button type="submit" data-mdb-button-init data-mdb-ripple-init
                           class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                 </div>
 
+                <!-- Login Link -->
                 <p class="text-center text-muted mt-3 mb-0">Already a member? <a routerLink="/login"
                                                                                  class="fw-bold text-body"><u>Log In</u></a></p>
 
               </form>
+
+              <!-- Success Message -->
               <div *ngIf="message" class="alert alert-success mt-3">{{ message }}</div>
-              <!-- Show message -->
+
+              <!-- Error Message -->
               <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+
             </div>
           </div>
         </div>

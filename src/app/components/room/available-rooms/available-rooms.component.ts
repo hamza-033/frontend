@@ -56,9 +56,22 @@ export class AvailableRoomsComponent implements OnInit {
         }
       });
     } else {
+      // Sauvegarder les paramètres de réservation dans sessionStorage
+      const reservationParams = {
+        roomId: roomId,
+        enteranceDay: this.route.snapshot.queryParams['enteranceDay'],
+        releaseDay: this.route.snapshot.queryParams['releaseDay'],
+        roomType: this.route.snapshot.queryParams['roomType'],
+        capacity: this.route.snapshot.queryParams['capacity'],
+        location: this.route.snapshot.queryParams['location'],
+      };
+      sessionStorage.setItem('reservationParams', JSON.stringify(reservationParams));
+
+      // Rediriger vers la page de login
       this.router.navigate(['/login']);
     }
   }
+
 
   getFeedbackList(hotelId: number): void {
     this.router.navigate(['/feedbackforusers'], { queryParams: { hotelId } });

@@ -17,13 +17,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   imports: [
     CommonModule,
     LayoutComponent,
-    CitySliderComponent,
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    AvailableRoomsComponent,
-    RouterLink,
     ReactiveFormsModule
   ],
   templateUrl: './home-page.component.html',
@@ -31,23 +28,30 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class HomePageComponent implements OnInit {
   searchForm: FormGroup;
+  minDate: Date;
 
   constructor(
     private fb: FormBuilder,
     private router: Router
   ) {
+    // Initialiser la date minimale à aujourd'hui
+    this.minDate = new Date();
+
+    // Définir le formulaire avec les validations
     this.searchForm = this.fb.group({
       location: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       roomType: [''],
       capacity: ['']
+    }, {
+      validators: this.dateRangeValidator // Validation personnalisée pour les plages de dates
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  // Méthode pour formater une date (facultatif)
   formatDate(date: string): string {
     const dateObj = new Date(date);
     const year = dateObj.getFullYear();
@@ -56,11 +60,24 @@ export class HomePageComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
 
+  // Méthode de validation personnalisée pour vérifier les plages de dates
+  dateRangeValidator(formGroup: FormGroup): { [key: string]: any } | null {
+    const startDate = formGroup.get('startDate')?.value;
+    const endDate = formGroup.get('endDate')?.value;
+
+    if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
+      return { dateRangeInvalid: true };
+    }
+    return null;
+  }
+
+  // Méthode appelée lors de la recherche
   onSearch(): void {
     const { location, startDate, endDate, roomType, capacity } = this.searchForm.value;
     const formattedStartDate = this.formatDate(startDate);
     const formattedEndDate = this.formatDate(endDate);
 
+    // Navigation avec les paramètres
     this.router.navigate(['/availableroomslist'], {
       queryParams: {
         enteranceDay: formattedStartDate,
